@@ -1,6 +1,12 @@
 extends PathFollow2D
 class_name Train
 
+var passed_splitter: Splitter:
+	set(new_splitter):
+		if passed_splitter: passed_splitter.enabled = true
+		if new_splitter: new_splitter.enabled = false
+		passed_splitter = new_splitter
+
 ## Number between 0 and 1 indicating the position 
 var speed: float:
 	set(new_speed):
@@ -8,8 +14,15 @@ var speed: float:
 
 @export var speed_curve: Curve
 
+var previous_progress: float = 0
+
 func _process(delta: float) -> void:
 	progress += speed_curve.sample(speed) * max_speed * delta
+
+	if previous_progress - progress_ratio > 0.5:
+		Global.train.passed_splitter = null
+
+	previous_progress = progress_ratio
 
 @export var max_speed: float = 200
 
@@ -23,4 +36,7 @@ func accelerate(delta: float) -> void:
 func decelerate(delta:float) -> void:
 	speed -= speed_decrease * delta
 
-
+func _on_train_box_area_entered(area: Area2D) -> void:
+	# Disable the splitter we just passed.
+	if area is Splitter:
+		passed_splitter = area

@@ -3,8 +3,10 @@ class_name Splitter
 
 @export var connections: Array[Rail]
 
+var enabled: bool = true
 var connection_index: int = 0:
 	set(new_index):
+		if not enabled: return
 		if new_index >= len(connections): connection_index = 0
 		else: connection_index = new_index
 
