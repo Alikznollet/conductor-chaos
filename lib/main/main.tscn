@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://co3jvbpwp7vnh"]
+
+[ext_resource type="Script" uid="uid://b1g4760sqyqgr" path="res://lib/tracks/track.gd" id="1_65qhm"]
+[ext_resource type="Script" uid="uid://bnj21a4a4v1p3" path="res://lib/main/main.gd" id="1_b1lab"]
+[ext_resource type="PackedScene" uid="uid://0wlbe5odp6qx" path="res://lib/train/train.tscn" id="2_x52nu"]
+[ext_resource type="Script" uid="uid://ckjf4dkbukhe3" path="res://lib/tracks/rail.gd" id="3_x52nu"]
+[ext_resource type="Script" uid="uid://bv6pvomqd8ybp" path="res://lib/state/state_manager.gd" id="4_xhtjf"]
+[ext_resource type="Script" uid="uid://d28104c44jpko" path="res://lib/state/active_state.gd" id="5_b1lab"]
+[ext_resource type="Script" uid="uid://f2h77xdakk66" path="res://lib/state/inactive_state.gd" id="6_x7o64"]
+
+[sub_resource type="Curve2D" id="Curve2D_s3fb5"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_b1lab")
+
+[node name="Track" type="Path2D" parent="." node_paths=PackedStringArray("starting_rail")]
+curve = SubResource("Curve2D_s3fb5")
+script = ExtResource("1_65qhm")
+starting_rail = NodePath("Rail1")
+metadata/_custom_type_script = "uid://b1g4760sqyqgr"
+
+[node name="Train" parent="Track" instance=ExtResource("2_x52nu")]
+unique_name_in_owner = true
+
+[node name="Rail1" type="Line2D" parent="Track" node_paths=PackedStringArray("connected_to")]
+points = PackedVector2Array(0, 0, 122, 273, 169, 596, 466, 647, 891, 639)
+script = ExtResource("3_x52nu")
+connected_to = NodePath("../Rail2")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="Rail2" type="Line2D" parent="Track" node_paths=PackedStringArray("connected_to")]
+points = PackedVector2Array(894, 639, 1233, 527, 1194, 218, 933, 41)
+script = ExtResource("3_x52nu")
+connected_to = NodePath("../Rail3")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="Rail3" type="Line2D" parent="Track" node_paths=PackedStringArray("connected_to")]
+points = PackedVector2Array(933, 43, 478, 54, 0, 2)
+script = ExtResource("3_x52nu")
+connected_to = NodePath("../Rail1")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
+script = ExtResource("4_xhtjf")
+initial_state = NodePath("ActiveState")
+metadata/_custom_type_script = "uid://bv6pvomqd8ybp"
+
+[node name="ActiveState" type="Node" parent="StateManager"]
+script = ExtResource("5_b1lab")
+metadata/_custom_type_script = "uid://d28104c44jpko"
+
+[node name="InactiveState" type="Node" parent="StateManager"]
+script = ExtResource("6_x7o64")
+metadata/_custom_type_script = "uid://f2h77xdakk66"
