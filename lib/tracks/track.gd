@@ -16,7 +16,7 @@ func add_connection(connection: Rail) -> void:
 	for point in connection.points:
 		curve.add_point(point)
 
-	if not connection.splitter: return
+	if not connection.junction: return
 
-	add_connection(connection.splitter.get_selected_rail())
+	add_connection(connection.junction.get_selected_rail())
 	
