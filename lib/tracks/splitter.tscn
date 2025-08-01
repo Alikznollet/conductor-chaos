@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpkm4f857cblu"]
+
+[ext_resource type="Script" uid="uid://c60fksyx3y7t7" path="res://lib/tracks/splitter.gd" id="1_tlhxv"]
+
+[sub_resource type="Gradient" id="Gradient_7844d"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kybrn"]
+gradient = SubResource("Gradient_7844d")
+width = 30
+height = 30
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlhxv"]
+size = Vector2(30, 30)
+
+[node name="Splitter" type="Area2D"]
+script = ExtResource("1_tlhxv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_kybrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tlhxv")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
