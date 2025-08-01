@@ -11,11 +11,11 @@ var speed: float:
 func _process(delta: float) -> void:
 	progress += speed_curve.sample(speed) * max_speed * delta
 
-@export var max_speed: float = 100
+@export var max_speed: float = 200
 
 ## How much speed increases per second
-@export var speed_increase: float = 0.2
-@export var speed_decrease: float = 0.2
+@export var speed_increase: float = 0.3
+@export var speed_decrease: float = 0.3
 
 func accelerate(delta: float) -> void:
 	speed += speed_increase * delta
