@@ -1,4 +1,4 @@
-extends Area2D
+extends Junction
 class_name Splitter
 
 @export var connections: Array[Rail]
