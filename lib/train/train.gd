@@ -65,3 +65,4 @@ func exit_passengers_at(station_name: String) -> void:
 	for passengers in passengers_exited:
 		passengers_boarded.erase(passengers)
 		passengers.reached_destination.emit()
+		Global.add_score(passengers.patience/passengers.max_patience)

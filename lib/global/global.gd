@@ -21,3 +21,19 @@ var passenger_timer: Timer
 
 var base_patience: float = 30
 var patience_variance: float = 5
+
+## The player's current score
+var score: float = .0:
+	set(new_score):
+		score = new_score
+		score_changed.emit()
+	
+const base_score: float = 100
+signal score_changed()
+
+## Add score based on how much time was left to deliver the passengers.
+func add_score(time_left_percent: float) -> void:
+	var multiplier: float = score_curve.sample(time_left_percent)
+	score += base_score * multiplier
+
+var score_curve: Curve
