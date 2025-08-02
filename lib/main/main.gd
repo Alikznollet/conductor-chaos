@@ -7,6 +7,7 @@ func _ready() -> void:
 	Global.train = %Train
 	Global.track = %Track
 	Global.station_manager = %StationManager
+	Global.camera_manager = %CameraManager
 	Global.game_ui = %GameUI
 	Global.passenger_timer = %PassengerTimer
 
