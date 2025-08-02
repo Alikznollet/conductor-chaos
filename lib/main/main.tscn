@@ -1,16 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://co3jvbpwp7vnh"]
+[gd_scene load_steps=16 format=3 uid="uid://co3jvbpwp7vnh"]
 
 [ext_resource type="Script" uid="uid://b1g4760sqyqgr" path="res://lib/tracks/track.gd" id="1_65qhm"]
 [ext_resource type="Script" uid="uid://bnj21a4a4v1p3" path="res://lib/main/main.gd" id="1_b1lab"]
 [ext_resource type="PackedScene" uid="uid://0wlbe5odp6qx" path="res://lib/train/train.tscn" id="2_x52nu"]
-[ext_resource type="Script" uid="uid://ckjf4dkbukhe3" path="res://lib/tracks/rail.gd" id="3_x52nu"]
 [ext_resource type="Script" uid="uid://bv6pvomqd8ybp" path="res://lib/state/state_manager.gd" id="4_xhtjf"]
+[ext_resource type="Script" uid="uid://ckjf4dkbukhe3" path="res://lib/tracks/rail.gd" id="5_6xup4"]
 [ext_resource type="Script" uid="uid://d28104c44jpko" path="res://lib/state/active_state.gd" id="5_b1lab"]
-[ext_resource type="PackedScene" uid="uid://bpkm4f857cblu" path="res://lib/tracks/splitter.tscn" id="5_x7o64"]
-[ext_resource type="Script" uid="uid://5fxlwtnb4xdg" path="res://lib/tracks/combiner.gd" id="6_6xup4"]
+[ext_resource type="PackedScene" uid="uid://bpkm4f857cblu" path="res://lib/tracks/splitter.tscn" id="6_wftuq"]
 [ext_resource type="Script" uid="uid://f2h77xdakk66" path="res://lib/state/inactive_state.gd" id="6_x7o64"]
+[ext_resource type="Script" uid="uid://5fxlwtnb4xdg" path="res://lib/tracks/combiner.gd" id="7_b8gvj"]
+[ext_resource type="Texture2D" uid="uid://cbkiuucb00fe6" path="res://assets/map/map.png" id="9_kix6x"]
+[ext_resource type="PackedScene" uid="uid://drjakkf4aqn5o" path="res://lib/station/station.tscn" id="9_xgxwf"]
 [ext_resource type="Script" uid="uid://cw1fuvqwpjm1v" path="res://lib/station/station_manager.gd" id="10_xgxwf"]
-[ext_resource type="PackedScene" uid="uid://drjakkf4aqn5o" path="res://lib/station/station.tscn" id="11_6xup4"]
 [ext_resource type="PackedScene" uid="uid://b6x1a5f6okvs5" path="res://lib/ui/game/game_ui.tscn" id="12_wftuq"]
 
 [sub_resource type="Curve" id="Curve_wftuq"]
@@ -23,11 +24,14 @@ point_count = 3
 script = ExtResource("1_b1lab")
 score_curve = SubResource("Curve_wftuq")
 
+[node name="Map" type="Sprite2D" parent="."]
+texture = ExtResource("9_kix6x")
+
 [node name="Track" type="Path2D" parent="." node_paths=PackedStringArray("starting_rail")]
 unique_name_in_owner = true
 curve = SubResource("Curve2D_s3fb5")
 script = ExtResource("1_65qhm")
-starting_rail = NodePath("Rail")
+starting_rail = NodePath("Red1")
 metadata/_custom_type_script = "uid://b1g4760sqyqgr"
 
 [node name="Train" parent="Track" instance=ExtResource("2_x52nu")]
@@ -35,37 +39,205 @@ unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="Track/Train"]
 
-[node name="Rail" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
-points = PackedVector2Array(0, 0, 1, 652, 9, 671, 26, 692, 54, 700, 93, 700, 411, 699, 685, 686, 1094, 674)
-script = ExtResource("3_x52nu")
-junction = NodePath("../Splitter")
+[node name="Red1" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(-1369, -72, -1369, 301, -1363, 318, -1350, 331, -1334, 341, -1315, 344, -1282, 344, -859, 344)
+script = ExtResource("5_6xup4")
+junction = NodePath("../RedYellow")
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
-[node name="Splitter" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("5_x7o64")]
-position = Vector2(1104, 671)
-connections = [NodePath("../Rail2"), NodePath("../Rail3")]
+[node name="RedYellow" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
+position = Vector2(-858, 344)
+connections = [NodePath("../Red2"), NodePath("../Yellow1")]
 
-[node name="Rail2" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
-points = PackedVector2Array(1125, 670, 1588, 670, 1615, 656, 1640, 630, 1651, 596, 1652, 551, 1652, 342, 1653, 176, 1651, 102, 1637, 72, 1616, 57, 1584, 46, 1545, 44, 1117, 42, 735, 43, 499, 41)
-script = ExtResource("3_x52nu")
-junction = NodePath("../Combiner")
+[node name="Yellow1" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(-858, 344, -838, 343, -823, 327, -814, 314, -810, 299, -809, 224, -799, 204, -785, 191, -770, 184, -598, 184, -398, 184)
+script = ExtResource("5_6xup4")
+junction = NodePath("../YellowPink")
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
-[node name="Rail3" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
-points = PackedVector2Array(1107, 657, 1124, 636, 1149, 624, 1176, 617, 1441, 618, 1461, 614, 1477, 601, 1484, 583, 1484, 490, 1482, 381, 1480, 361, 1470, 346, 1455, 336, 1438, 333, 1412, 332, 1100, 333, 819, 332, 789, 320, 772, 304, 757, 288, 738, 268, 652, 170, 621, 139, 582, 96, 547, 77, 503, 51)
-script = ExtResource("3_x52nu")
-junction = NodePath("../Combiner")
+[node name="YellowPink" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
+position = Vector2(-398, 184)
+connections = [NodePath("../Yellow2"), NodePath("../Pink")]
+
+[node name="Pink" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(-398, 184, -377, 184, -361, 172, -352, 160, -346, 148, -345, 141, -346, -430, -351, -443, -357, -452, -367, -462, -377, -467, -388, -468)
+script = ExtResource("5_6xup4")
+junction = NodePath("../PinkRed")
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
-[node name="Combiner" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
-position = Vector2(496, 46)
-script = ExtResource("6_6xup4")
-connection = NodePath("../Rail4")
+[node name="Yellow2" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(-398, 184, 73, 184, 91, 191, 105, 203, 114, 218, 115, 235, 117, 419, 121, 431, 128, 440, 140, 451, 158, 458, 171, 459)
+script = ExtResource("5_6xup4")
+junction = NodePath("../YellowRed")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="Red2" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(-858, 344, -675, 343, -657, 349, -644, 357, -633, 371, -629, 386, -629, 418, -624, 430, -616, 441, -604, 450, -587, 457, -356, 457)
+script = ExtResource("5_6xup4")
+junction = NodePath("../RedGreen")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="RedGreen" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
+position = Vector2(-352, 457)
+connections = [NodePath("../Red3"), NodePath("../Green1")]
+
+[node name="Green1" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(-352, 457, -336, 457, -320, 468, -310, 481, -303, 494, -302, 512, -301, 828, -297, 845, -288, 857, -273, 867, -255, 873, 270, 872)
+script = ExtResource("5_6xup4")
+junction = NodePath("../GreenOrange")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="GreenOrange" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
+position = Vector2(272, 873)
+connections = [NodePath("../Green2"), NodePath("../Orange1")]
+
+[node name="Orange1" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(273, 873, 294, 873, 309, 866, 321, 853, 328, 842, 330, 830, 331, -359)
+script = ExtResource("5_6xup4")
+junction = NodePath("../PurpleOrange")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="Green2" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(272, 873, 571, 872, 598, 861, 611, 844, 616, 831, 616, 777, 621, 760, 634, 744, 649, 733, 673, 733)
+script = ExtResource("5_6xup4")
+junction = NodePath("../GreenRed")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="Red3" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(-352, 457, 170, 458)
+script = ExtResource("5_6xup4")
+junction = NodePath("../YellowRed")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="YellowRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
+position = Vector2(171, 459)
+script = ExtResource("7_b8gvj")
+connection = NodePath("../Red4")
 metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
 
-[node name="Rail4" type="Line2D" parent="Track"]
-points = PackedVector2Array(488, 45, 458, 44, 426, 33, 401, 20, 375, 8, 305, 7, 194, 5, 15, 4)
-script = ExtResource("3_x52nu")
+[node name="Red4" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(172, 459, 488, 458, 506, 462, 520, 474, 531, 491, 535, 505, 535, 691, 542, 711, 558, 726, 575, 733, 673, 733)
+script = ExtResource("5_6xup4")
+junction = NodePath("../GreenRed")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="GreenRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
+position = Vector2(674, 733)
+script = ExtResource("7_b8gvj")
+connection = NodePath("../Red5")
+metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
+
+[node name="Red5" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(676, 733, 919, 733, 938, 726, 952, 714, 960, 701, 962, 686, 962, 391)
+script = ExtResource("5_6xup4")
+junction = NodePath("../RedBlue")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="RedBlue" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
+position = Vector2(962, 392)
+connections = [NodePath("../Red6"), NodePath("../Blue1")]
+
+[node name="Blue1" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(962, 390, 962, 372, 976, 359, 990, 350, 1005, 344, 1025, 344, 1237, 344, 1255, 339, 1269, 328, 1278, 314, 1281, 301, 1281, -257)
+script = ExtResource("5_6xup4")
+junction = NodePath("../BluePurple")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="BluePurple" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
+position = Vector2(1281, -258)
+connections = [NodePath("../Blue2"), NodePath("../Purple")]
+
+[node name="Purple" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(1281, -259, 1281, -276, 1274, -288, 1260, -301, 1240, -308, 374, -309, 356, -317, 344, -326, 334, -339, 331, -358)
+script = ExtResource("5_6xup4")
+junction = NodePath("../PurpleOrange")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="PurpleOrange" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
+position = Vector2(331, -360)
+script = ExtResource("7_b8gvj")
+connection = NodePath("../Orange2")
+metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
+
+[node name="Blue2" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(1281, -260, 1280, -732, 1274, -748, 1260, -763, 1242, -772, 535, -772, 513, -765, 499, -752, 490, -735, 489, -512, 483, -494, 474, -482, 461, -472, 442, -467, 430, -467)
+script = ExtResource("5_6xup4")
+junction = NodePath("../BlueRed")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="Red6" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(962, 390, 962, -49)
+script = ExtResource("5_6xup4")
+junction = NodePath("../RedAqua")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="RedAqua" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
+position = Vector2(962, -50)
+connections = [NodePath("../Red7"), NodePath("../Aqua")]
+
+[node name="Aqua" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(962, -54, 962, -69, 952, -80, 938, -89, 921, -96, -942, -97, -959, -102, -973, -112, -982, -125, -986, -142, -987, -423, -993, -443, -1004, -459, -1019, -468, -1035, -468)
+script = ExtResource("5_6xup4")
+junction = NodePath("../AquaRed")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="Red7" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(962, -54, 962, -429, 954, -445, 938, -460, 919, -468, 891, -469, 430, -467)
+script = ExtResource("5_6xup4")
+junction = NodePath("../BlueRed")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="BlueRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
+position = Vector2(428, -467)
+script = ExtResource("7_b8gvj")
+connection = NodePath("../Red8")
+metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
+
+[node name="Orange2" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(331, -361, 332, -420, 328, -438, 317, -452, 303, -465, 280, -468)
+script = ExtResource("5_6xup4")
+junction = NodePath("../BlueRed")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="Red8" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(426, -467, 280, -468)
+script = ExtResource("5_6xup4")
+junction = NodePath("../OrangeRed")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="OrangeRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
+position = Vector2(278, -468)
+script = ExtResource("7_b8gvj")
+connection = NodePath("../Red9")
+metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
+
+[node name="Red9" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(277, -468, -388, -468)
+script = ExtResource("5_6xup4")
+junction = NodePath("../PinkRed")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="PinkRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
+position = Vector2(-389, -468)
+script = ExtResource("7_b8gvj")
+connection = NodePath("../Red10")
+metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
+
+[node name="Red10" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
+points = PackedVector2Array(-390, -468, -1035, -468)
+script = ExtResource("5_6xup4")
+junction = NodePath("../AquaRed")
+metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
+
+[node name="AquaRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
+position = Vector2(-1036, -468)
+script = ExtResource("7_b8gvj")
+connection = NodePath("../Red11")
+metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
+
+[node name="Red11" type="Line2D" parent="Track"]
+points = PackedVector2Array(-1037, -468, -1322, -468, -1340, -464, -1356, -451, -1367, -434, -1369, -417, -1369, -75)
+script = ExtResource("5_6xup4")
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -86,18 +258,46 @@ metadata/_custom_type_script = "uid://f2h77xdakk66"
 unique_name_in_owner = true
 script = ExtResource("10_xgxwf")
 metadata/_custom_type_script = "uid://cw1fuvqwpjm1v"
+metadata/_edit_lock_ = true
 
-[node name="A" parent="StationManager" instance=ExtResource("11_6xup4")]
-position = Vector2(575, 714)
-rotation = -0.0372261
+[node name="A" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(-1369, -73)
 
-[node name="B" parent="StationManager" instance=ExtResource("11_6xup4")]
-position = Vector2(1132, 313)
-rotation = -3.14062
+[node name="B" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(-480, 460)
 
-[node name="C" parent="StationManager" instance=ExtResource("11_6xup4")]
-position = Vector2(1681, 345)
-rotation = -1.56351
+[node name="C" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(533, 594)
+
+[node name="D" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(963, 553)
+
+[node name="E" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(1, -468)
+
+[node name="F" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(-598, 184)
+
+[node name="G" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(-345, -213)
+
+[node name="H" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(24, 872)
+
+[node name="I" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(331, 7)
+
+[node name="J" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(-679, -98)
+
+[node name="K" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(1280, 49)
+
+[node name="L" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(806, -772)
+
+[node name="M" parent="StationManager" instance=ExtResource("9_xgxwf")]
+position = Vector2(759, -309)
 
 [node name="GameUI" parent="." instance=ExtResource("12_wftuq")]
 unique_name_in_owner = true
