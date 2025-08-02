@@ -8,3 +8,17 @@ func train_timer(passengers: Passengers) -> void:
 	timer.passengers = passengers
 
 	%Timers.add_child(timer)
+
+func _ready() -> void:
+	Global.score_changed.connect(interpolate_score)
+
+var shown_score: float:
+	set(new_visual):
+		shown_score = new_visual
+		%Score.text = str(new_visual)
+
+## Will visually update the score.
+func interpolate_score() -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(self, "shown_score", Global.score, 0.5).set_trans(Tween.TRANS_CUBIC)
+	tween.play()
