@@ -1,25 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpkm4f857cblu"]
 
 [ext_resource type="Script" uid="uid://c60fksyx3y7t7" path="res://lib/tracks/splitter.gd" id="1_tlhxv"]
-
-[sub_resource type="Gradient" id="Gradient_7844d"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kybrn"]
-gradient = SubResource("Gradient_7844d")
-width = 30
-height = 30
+[ext_resource type="Texture2D" uid="uid://c3n2jb04q80q4" path="res://assets/splitters/Background.png" id="2_kybrn"]
+[ext_resource type="Texture2D" uid="uid://ccotrlh72io11" path="res://assets/splitters/Stroke.png" id="3_2xkaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlhxv"]
-size = Vector2(30, 30)
+size = Vector2(76, 76)
 
 [node name="Splitter" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_tlhxv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_kybrn")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_tlhxv")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_kybrn")
+
+[node name="Stroke" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("3_2xkaa")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

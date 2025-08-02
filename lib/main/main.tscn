@@ -43,6 +43,7 @@ unique_name_in_owner = true
 points = PackedVector2Array(-1369, -72, -1369, 301, -1363, 318, -1350, 331, -1334, 341, -1315, 344, -1282, 344, -859, 344)
 script = ExtResource("5_6xup4")
 junction = NodePath("../RedYellow")
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="RedYellow" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
@@ -53,6 +54,7 @@ connections = [NodePath("../Red2"), NodePath("../Yellow1")]
 points = PackedVector2Array(-858, 344, -838, 343, -823, 327, -814, 314, -810, 299, -809, 224, -799, 204, -785, 191, -770, 184, -598, 184, -398, 184)
 script = ExtResource("5_6xup4")
 junction = NodePath("../YellowPink")
+color = Color(1, 0.85098, 0.364706, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="YellowPink" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
@@ -63,18 +65,21 @@ connections = [NodePath("../Yellow2"), NodePath("../Pink")]
 points = PackedVector2Array(-398, 184, -377, 184, -361, 172, -352, 160, -346, 148, -345, 141, -346, -430, -351, -443, -357, -452, -367, -462, -377, -467, -388, -468)
 script = ExtResource("5_6xup4")
 junction = NodePath("../PinkRed")
+color = Color(1, 0.364706, 0.713726, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="Yellow2" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
 points = PackedVector2Array(-398, 184, 73, 184, 91, 191, 105, 203, 114, 218, 115, 235, 117, 419, 121, 431, 128, 440, 140, 451, 158, 458, 171, 459)
 script = ExtResource("5_6xup4")
 junction = NodePath("../YellowRed")
+color = Color(1, 0.85098, 0.364706, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="Red2" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
 points = PackedVector2Array(-858, 344, -675, 343, -657, 349, -644, 357, -633, 371, -629, 386, -629, 418, -624, 430, -616, 441, -604, 450, -587, 457, -356, 457)
 script = ExtResource("5_6xup4")
 junction = NodePath("../RedGreen")
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="RedGreen" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
@@ -85,6 +90,7 @@ connections = [NodePath("../Red3"), NodePath("../Green1")]
 points = PackedVector2Array(-352, 457, -336, 457, -320, 468, -310, 481, -303, 494, -302, 512, -301, 828, -297, 845, -288, 857, -273, 867, -255, 873, 270, 872)
 script = ExtResource("5_6xup4")
 junction = NodePath("../GreenOrange")
+color = Color(0.145098, 0.619608, 0.117647, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="GreenOrange" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
@@ -95,18 +101,21 @@ connections = [NodePath("../Green2"), NodePath("../Orange1")]
 points = PackedVector2Array(273, 873, 294, 873, 309, 866, 321, 853, 328, 842, 330, 830, 331, -359)
 script = ExtResource("5_6xup4")
 junction = NodePath("../PurpleOrange")
+color = Color(1, 0.486275, 0.0392157, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="Green2" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
 points = PackedVector2Array(272, 873, 571, 872, 598, 861, 611, 844, 616, 831, 616, 777, 621, 760, 634, 744, 649, 733, 673, 733)
 script = ExtResource("5_6xup4")
 junction = NodePath("../GreenRed")
+color = Color(0.145098, 0.619608, 0.117647, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="Red3" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
 points = PackedVector2Array(-352, 457, 170, 458)
 script = ExtResource("5_6xup4")
 junction = NodePath("../YellowRed")
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="YellowRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
@@ -119,6 +128,7 @@ metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
 points = PackedVector2Array(172, 459, 488, 458, 506, 462, 520, 474, 531, 491, 535, 505, 535, 691, 542, 711, 558, 726, 575, 733, 673, 733)
 script = ExtResource("5_6xup4")
 junction = NodePath("../GreenRed")
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="GreenRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
@@ -131,6 +141,7 @@ metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
 points = PackedVector2Array(676, 733, 919, 733, 938, 726, 952, 714, 960, 701, 962, 686, 962, 391)
 script = ExtResource("5_6xup4")
 junction = NodePath("../RedBlue")
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="RedBlue" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
@@ -141,6 +152,7 @@ connections = [NodePath("../Red6"), NodePath("../Blue1")]
 points = PackedVector2Array(962, 390, 962, 372, 976, 359, 990, 350, 1005, 344, 1025, 344, 1237, 344, 1255, 339, 1269, 328, 1278, 314, 1281, 301, 1281, -257)
 script = ExtResource("5_6xup4")
 junction = NodePath("../BluePurple")
+color = Color(0, 0.419608, 0.721569, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="BluePurple" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
@@ -151,6 +163,7 @@ connections = [NodePath("../Blue2"), NodePath("../Purple")]
 points = PackedVector2Array(1281, -259, 1281, -276, 1274, -288, 1260, -301, 1240, -308, 374, -309, 356, -317, 344, -326, 334, -339, 331, -358)
 script = ExtResource("5_6xup4")
 junction = NodePath("../PurpleOrange")
+color = Color(0.545098, 0, 0.909804, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="PurpleOrange" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
@@ -163,12 +176,14 @@ metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
 points = PackedVector2Array(1281, -260, 1280, -732, 1274, -748, 1260, -763, 1242, -772, 535, -772, 513, -765, 499, -752, 490, -735, 489, -512, 483, -494, 474, -482, 461, -472, 442, -467, 430, -467)
 script = ExtResource("5_6xup4")
 junction = NodePath("../BlueRed")
+color = Color(0, 0.419608, 0.721569, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="Red6" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
 points = PackedVector2Array(962, 390, 962, -49)
 script = ExtResource("5_6xup4")
 junction = NodePath("../RedAqua")
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="RedAqua" parent="Track" node_paths=PackedStringArray("connections") instance=ExtResource("6_wftuq")]
@@ -179,12 +194,14 @@ connections = [NodePath("../Red7"), NodePath("../Aqua")]
 points = PackedVector2Array(962, -54, 962, -69, 952, -80, 938, -89, 921, -96, -942, -97, -959, -102, -973, -112, -982, -125, -986, -142, -987, -423, -993, -443, -1004, -459, -1019, -468, -1035, -468)
 script = ExtResource("5_6xup4")
 junction = NodePath("../AquaRed")
+color = Color(0.0313726, 0.827451, 0.733333, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="Red7" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
 points = PackedVector2Array(962, -54, 962, -429, 954, -445, 938, -460, 919, -468, 891, -469, 430, -467)
 script = ExtResource("5_6xup4")
 junction = NodePath("../BlueRed")
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="BlueRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
@@ -196,13 +213,15 @@ metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
 [node name="Orange2" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
 points = PackedVector2Array(331, -361, 332, -420, 328, -438, 317, -452, 303, -465, 280, -468)
 script = ExtResource("5_6xup4")
-junction = NodePath("../BlueRed")
+junction = NodePath("../OrangeRed")
+color = Color(1, 0.486275, 0.0392157, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="Red8" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
 points = PackedVector2Array(426, -467, 280, -468)
 script = ExtResource("5_6xup4")
 junction = NodePath("../OrangeRed")
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="OrangeRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
@@ -215,6 +234,7 @@ metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
 points = PackedVector2Array(277, -468, -388, -468)
 script = ExtResource("5_6xup4")
 junction = NodePath("../PinkRed")
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="PinkRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
@@ -227,6 +247,7 @@ metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
 points = PackedVector2Array(-390, -468, -1035, -468)
 script = ExtResource("5_6xup4")
 junction = NodePath("../AquaRed")
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="AquaRed" type="Area2D" parent="Track" node_paths=PackedStringArray("connection")]
@@ -238,6 +259,7 @@ metadata/_custom_type_script = "uid://5fxlwtnb4xdg"
 [node name="Red11" type="Line2D" parent="Track"]
 points = PackedVector2Array(-1037, -468, -1322, -468, -1340, -464, -1356, -451, -1367, -434, -1369, -417, -1369, -75)
 script = ExtResource("5_6xup4")
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
