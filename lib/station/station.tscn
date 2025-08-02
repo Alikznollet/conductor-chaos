@@ -1,14 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://drjakkf4aqn5o"]
+[gd_scene load_steps=3 format=3 uid="uid://drjakkf4aqn5o"]
 
 [ext_resource type="Script" uid="uid://b3cshqrwy5014" path="res://lib/station/station.gd" id="1_eyace"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_21kdn"]
-size = Vector2(172, 59)
-
-[sub_resource type="Gradient" id="Gradient_eyace"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_60a4r"]
-gradient = SubResource("Gradient_eyace")
+[sub_resource type="CircleShape2D" id="CircleShape2D_60a4r"]
+radius = 37.054
 
 [node name="Station" type="Area2D"]
 collision_layer = 4
@@ -16,21 +11,13 @@ collision_mask = 2
 script = ExtResource("1_eyace")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(86, -29.5)
-shape = SubResource("RectangleShape2D_21kdn")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(7.62939e-06, 54.6976)
-scale = Vector2(5.375, 1.67805)
-texture = SubResource("GradientTexture2D_60a4r")
+shape = SubResource("CircleShape2D_60a4r")
 
 [node name="PassengersControl" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -112.0
-offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
 

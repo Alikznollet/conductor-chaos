@@ -5,4 +5,5 @@ class_name Rail
 ## The rail this rail is connected to.
 @export var junction: Junction
 
-
+func _ready() -> void:
+	default_color = Color.TRANSPARENT
