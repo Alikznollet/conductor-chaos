@@ -1,39 +1,106 @@
-[gd_scene load_steps=5 format=3 uid="uid://d10fj4d10l5ak"]
+[gd_scene load_steps=9 format=3 uid="uid://d10fj4d10l5ak"]
 
 [ext_resource type="Script" uid="uid://d4grh05q0dq2r" path="res://lib/station/station_progress.gd" id="1_rvxeo"]
-[ext_resource type="Texture2D" uid="uid://gllrhd7mq3ev" path="res://assets/background.png" id="2_fqttb"]
-[ext_resource type="Texture2D" uid="uid://d2m5bwin65qrm" path="res://assets/progress.png" id="3_ai8ty"]
+[ext_resource type="Texture2D" uid="uid://t00flnagyqbs" path="res://assets/stops/Background.png" id="2_rvxeo"]
+[ext_resource type="Texture2D" uid="uid://n7tosly8c40q" path="res://assets/stops/Stroke.png" id="3_fqttb"]
+[ext_resource type="FontVariation" uid="uid://dgknsel7760y4" path="res://assets/fonts/StationFont.tres" id="4_fqttb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_14qph"]
-font_size = 80
+resource_local_to_scene = true
+font = ExtResource("4_fqttb")
+font_size = 50
+
+[sub_resource type="Animation" id="Animation_fqttb"]
+resource_name = "bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ai8ty"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ai8ty"]
+_data = {
+&"RESET": SubResource("Animation_ai8ty"),
+&"bounce": SubResource("Animation_fqttb")
+}
 
 [node name="StationProgress" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+scale = Vector2(1.00051, 1.00051)
 script = ExtResource("1_rvxeo")
 
-[node name="Progress" type="TextureProgressBar" parent="."]
-unique_name_in_owner = true
-layout_mode = 2
-offset_right = 100.0
-offset_bottom = 100.0
-fill_mode = 5
-texture_under = ExtResource("2_fqttb")
-texture_over = ExtResource("3_ai8ty")
-texture_progress = ExtResource("3_ai8ty")
-tint_under = Color(0.0605303, 0.0605303, 0.0605303, 0.0901961)
-tint_over = Color(0, 0, 0, 0.105882)
-tint_progress = Color(0.952565, 0.305773, 0.281069, 1)
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="StationName" type="Label" parent="Progress"]
+[node name="Progress" type="TextureProgressBar" parent="Control"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(40, 40)
+value = 100.0
+fill_mode = 5
+texture_under = ExtResource("2_rvxeo")
+texture_over = ExtResource("3_fqttb")
+texture_progress = ExtResource("3_fqttb")
+tint_over = Color(1, 1, 1, 0)
+
+[node name="StationName" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -55.0
+offset_right = -5.0
+offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "A"
 label_settings = SubResource("LabelSettings_14qph")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_ai8ty")
+}

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://drjakkf4aqn5o"]
+[gd_scene load_steps=4 format=3 uid="uid://drjakkf4aqn5o"]
 
 [ext_resource type="Script" uid="uid://b3cshqrwy5014" path="res://lib/station/station.gd" id="1_eyace"]
+[ext_resource type="PackedScene" uid="uid://d10fj4d10l5ak" path="res://lib/station/station_progress.tscn" id="2_60a4r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_60a4r"]
 radius = 37.054
@@ -20,6 +21,9 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="StationProgress" parent="." instance=ExtResource("2_60a4r")]
+unique_name_in_owner = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

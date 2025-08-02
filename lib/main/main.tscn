@@ -301,42 +301,55 @@ metadata/_edit_lock_ = true
 
 [node name="A" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(-1369, -73)
+color = Color(1, 0, 0, 1)
 
 [node name="B" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(-480, 460)
+color = Color(1, 0, 0, 1)
 
 [node name="C" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(533, 594)
+color = Color(1, 0, 0, 1)
 
 [node name="D" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(963, 553)
+color = Color(1, 0, 0, 1)
 
 [node name="E" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(1, -468)
+color = Color(1, 0, 0, 1)
 
 [node name="F" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(-598, 184)
+color = Color(1, 0.85098, 0.364706, 1)
 
 [node name="G" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(-345, -213)
+color = Color(1, 0.364706, 0.713726, 1)
 
 [node name="H" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(24, 872)
+color = Color(0.145098, 0.619608, 0.117647, 1)
 
 [node name="I" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(331, 7)
+color = Color(1, 0.486275, 0.0392157, 1)
 
 [node name="J" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(-679, -98)
+color = Color(0.0313726, 0.827451, 0.733333, 1)
 
 [node name="K" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(1280, 49)
+color = Color(0, 0.419608, 0.721569, 1)
 
 [node name="L" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(806, -772)
+color = Color(0, 0.419608, 0.721569, 1)
 
 [node name="M" parent="StationManager" instance=ExtResource("9_xgxwf")]
 position = Vector2(759, -309)
+color = Color(0.545098, 0, 0.909804, 1)
 
 [node name="GameUI" parent="." instance=ExtResource("12_wftuq")]
 unique_name_in_owner = true
