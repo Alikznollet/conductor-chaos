@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://0wlbe5odp6qx"]
+[gd_scene load_steps=7 format=3 uid="uid://0wlbe5odp6qx"]
 
 [ext_resource type="Script" uid="uid://dw2jmlh0n4acv" path="res://lib/train/train.gd" id="1_2ctkf"]
 [ext_resource type="Texture2D" uid="uid://ip10llewiq8g" path="res://assets/Train/Train.png" id="2_rtssa"]
+[ext_resource type="AudioStream" uid="uid://cm4k7i1w1e1xm" path="res://sounds/railway-train-339502.mp3" id="3_aw8ky"]
+[ext_resource type="AudioStream" uid="uid://c5qdqa1wob00" path="res://sounds/train.mp3" id="4_qyl4o"]
 
 [sub_resource type="Curve" id="Curve_2ctkf"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.586021, 0.876405), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.149866, 0.0, 0, 0]
@@ -26,5 +28,20 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrainBox"]
 shape = SubResource("CircleShape2D_2ctkf")
+
+[node name="Tracks" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_aw8ky")
+volume_db = -20.0
+pitch_scale = 0.01
+parameters/looping = true
+
+[node name="Revving" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_qyl4o")
+volume_db = -30.0
+pitch_scale = 0.01
+autoplay = true
+parameters/looping = true
 
 [connection signal="area_entered" from="TrainBox" to="." method="_on_train_box_area_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://drjakkf4aqn5o"]
+[gd_scene load_steps=5 format=3 uid="uid://drjakkf4aqn5o"]
 
 [ext_resource type="Script" uid="uid://b3cshqrwy5014" path="res://lib/station/station.gd" id="1_eyace"]
 [ext_resource type="PackedScene" uid="uid://d10fj4d10l5ak" path="res://lib/station/station_progress.tscn" id="2_60a4r"]
+[ext_resource type="AudioStream" uid="uid://doawlbhjcgd33" path="res://sounds/school-cafeteria-ambience-55474.mp3" id="3_62fak"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_60a4r"]
 radius = 37.054
@@ -24,6 +25,14 @@ grow_vertical = 2
 
 [node name="StationProgress" parent="." instance=ExtResource("2_60a4r")]
 unique_name_in_owner = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_62fak")
+volume_db = -30.0
+autoplay = true
+max_distance = 600.0
+attenuation = 1.56917
+parameters/looping = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

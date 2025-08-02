@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgakc4g0r17e2"]
+[gd_scene load_steps=8 format=3 uid="uid://bgakc4g0r17e2"]
 
 [ext_resource type="Script" uid="uid://ckxhe4eti8fwg" path="res://lib/ui/menu/game_button.gd" id="1_se70s"]
 [ext_resource type="Texture2D" uid="uid://cboygvs61q350" path="res://assets/ui/play.png" id="2_xurbt"]
+[ext_resource type="AudioStream" uid="uid://datu5k4xgkpnm" path="res://sounds/button.wav" id="3_pouqw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pouqw"]
 
 [sub_resource type="Animation" id="Animation_pouqw"]
 length = 0.001
@@ -58,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pouqw")
 flat = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -65,6 +69,10 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_pouqw")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_pouqw")
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

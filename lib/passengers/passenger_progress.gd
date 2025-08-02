@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func _reached_destination() -> void:
 	%AnimationPlayer.play_backwards("pop_up")
+	%Death.play()
 	await %AnimationPlayer.animation_finished
 	queue_free()
 

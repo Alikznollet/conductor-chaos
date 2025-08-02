@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d10fj4d10l5ak"]
+[gd_scene load_steps=10 format=3 uid="uid://d10fj4d10l5ak"]
 
 [ext_resource type="Script" uid="uid://d4grh05q0dq2r" path="res://lib/station/station_progress.gd" id="1_rvxeo"]
 [ext_resource type="Texture2D" uid="uid://t00flnagyqbs" path="res://assets/stops/Background.png" id="2_rvxeo"]
 [ext_resource type="Texture2D" uid="uid://n7tosly8c40q" path="res://assets/stops/Stroke.png" id="3_fqttb"]
 [ext_resource type="FontVariation" uid="uid://dgknsel7760y4" path="res://assets/fonts/StationFont.tres" id="4_fqttb"]
+[ext_resource type="AudioStream" uid="uid://ddryrv2lcd2s2" path="res://sounds/pop-39222.mp3" id="5_ai8ty"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_14qph"]
 resource_local_to_scene = true
@@ -105,3 +106,8 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_ai8ty")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ai8ty")
+volume_db = -10.0
+pitch_scale = 1.1

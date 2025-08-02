@@ -9,6 +9,8 @@ var passed_splitters: Array[Splitter] = []
 var speed: float:
 	set(new_speed):
 		speed = clamp(new_speed, 0, 1)
+		%Tracks.pitch_scale = max(0.01, speed) * 0.7
+		%Revving.pitch_scale = max(0.01, speed) * 0.7
 
 @export var speed_curve: Curve
 

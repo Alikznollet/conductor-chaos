@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6sql7cyp7str"]
+[gd_scene load_steps=11 format=3 uid="uid://c6sql7cyp7str"]
 
 [ext_resource type="Script" uid="uid://dua3wk2eudkjd" path="res://lib/passengers/passenger_progress.gd" id="1_ih0t8"]
 [ext_resource type="Texture2D" uid="uid://t00flnagyqbs" path="res://assets/stops/Background.png" id="2_otv7t"]
 [ext_resource type="Texture2D" uid="uid://n7tosly8c40q" path="res://assets/stops/Stroke.png" id="4_lpy7e"]
 [ext_resource type="FontVariation" uid="uid://dgknsel7760y4" path="res://assets/fonts/StationFont.tres" id="4_otv7t"]
+[ext_resource type="AudioStream" uid="uid://bsn2xh843dbtb" path="res://sounds/board.wav" id="5_lpy7e"]
+[ext_resource type="AudioStream" uid="uid://cmuh2su6wv0vg" path="res://sounds/exitpassenger.wav" id="6_8oo15"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lpy7e"]
 resource_local_to_scene = true
@@ -91,3 +93,15 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_lpy7e")
 }
+
+[node name="Spawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lpy7e")
+volume_db = -10.0
+pitch_scale = 1.1
+autoplay = true
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_8oo15")
+volume_db = -20.0
+pitch_scale = 1.3

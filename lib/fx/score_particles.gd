@@ -9,7 +9,7 @@ static var explode_time: float = 0.3
 static var to_score_time: float = 1
 static var time_variance: float = 0.4
 
-static var texture: Texture = preload("uid://dpb7tpxrsdymn")
+static var particle: PackedScene = preload("uid://bsntyjv0h43ca")
 
 var particle_color: Color
 
@@ -27,8 +27,7 @@ func _ready() -> void:
 	to_pos = Global.game_ui.score_pos
 
 	for i in range(amount):
-		var sprite: TextureRect = TextureRect.new()
-		sprite.texture = texture
+		var sprite: TextureRect = particle.instantiate()
 		sprite.modulate = particle_color
 		sprite.scale = Vector2.ONE * 0.15
 		add_child(sprite)
@@ -36,7 +35,7 @@ func _ready() -> void:
 func play_animation() -> void:
 	var tween: Tween
 	var longest_time: float = .0
-	for child in get_children():
+	for child: ScoreParticle in get_children():
 		var angle = randf() * TAU 
 		var dir = Vector2(cos(angle), sin(angle))
 		var dist = distance + randf_range(-distance_variance, distance_variance)
@@ -48,6 +47,7 @@ func play_animation() -> void:
 		tween = create_tween()
 		tween.tween_property(child, "position", from_pos + vec, explode_time).set_trans(Tween.TRANS_CIRC).from(from_pos)
 		tween.tween_property(child, "position", to_pos, move_time).set_trans(Tween.TRANS_CUBIC)
+		tween.finished.connect(child.play_sound)
 		tween.play()
 
 	var timer: SceneTreeTimer = get_tree().create_timer(explode_time + longest_time)

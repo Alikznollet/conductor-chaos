@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm67w1nlycr2i"]
+
+[ext_resource type="AudioStream" uid="uid://gp2iyf8oo8u2" path="res://sounds/extremefreddy-loop.mp3" id="1_01u15"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_01u15")
+volume_db = -30.0
+pitch_scale = 0.8
+autoplay = true
+parameters/looping = true
