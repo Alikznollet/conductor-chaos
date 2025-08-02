@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://co3jvbpwp7vnh"]
+[gd_scene load_steps=20 format=3 uid="uid://co3jvbpwp7vnh"]
 
 [ext_resource type="Script" uid="uid://b1g4760sqyqgr" path="res://lib/tracks/track.gd" id="1_65qhm"]
 [ext_resource type="Script" uid="uid://bnj21a4a4v1p3" path="res://lib/main/main.gd" id="1_b1lab"]
@@ -13,12 +13,21 @@
 [ext_resource type="PackedScene" uid="uid://drjakkf4aqn5o" path="res://lib/station/station.tscn" id="9_xgxwf"]
 [ext_resource type="Script" uid="uid://cw1fuvqwpjm1v" path="res://lib/station/station_manager.gd" id="10_xgxwf"]
 [ext_resource type="PackedScene" uid="uid://b6x1a5f6okvs5" path="res://lib/ui/game/game_ui.tscn" id="12_wftuq"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="14_tp6qh"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="15_1ykpw"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="16_1ykpw"]
 
 [sub_resource type="Curve" id="Curve_wftuq"]
 _data = [Vector2(0, 0.191011), 0.0, 0.0, 0, 0, Vector2(0.639785, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_s3fb5"]
+
+[sub_resource type="Resource" id="Resource_yc1ix"]
+script = ExtResource("15_1ykpw")
+duration = 1.0
+transition = 0
+ease = 2
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_b1lab")
@@ -36,8 +45,8 @@ metadata/_custom_type_script = "uid://b1g4760sqyqgr"
 
 [node name="Train" parent="Track" instance=ExtResource("2_x52nu")]
 unique_name_in_owner = true
-
-[node name="Camera2D" type="Camera2D" parent="Track/Train"]
+z_index = 100
+position = Vector2(-1369, -73)
 
 [node name="Red1" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
 points = PackedVector2Array(-1369, -72, -1369, 301, -1363, 318, -1350, 331, -1334, 341, -1315, 344, -1282, 344, -859, 344)
@@ -328,3 +337,21 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 wait_time = 5.0
 autostart = true
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(-1369, -73)
+script = ExtResource("14_tp6qh")
+follow_mode = 2
+follow_target = NodePath("../Track/Train")
+tween_resource = SubResource("Resource_yc1ix")
+follow_damping = true
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1369, -73)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("16_1ykpw")
