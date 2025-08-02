@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://blt0wket01jla"]
+
+[ext_resource type="Script" uid="uid://cpggavad88u8m" path="res://lib/ui/menu/transition.gd" id="1_tikap"]
+
+[sub_resource type="Gradient" id="Gradient_1np2u"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.937255, 0.937255, 0.937255, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tikap"]
+gradient = SubResource("Gradient_1np2u")
+
+[sub_resource type="Animation" id="Animation_1np2u"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tikap"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qcfk0"]
+_data = {
+&"RESET": SubResource("Animation_tikap"),
+&"fade": SubResource("Animation_1np2u")
+}
+
+[node name="Transition" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+script = ExtResource("1_tikap")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_tikap")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_qcfk0")
+}

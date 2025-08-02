@@ -13,3 +13,6 @@ var paused: bool:
 
 func _on_play_pressed() -> void:
 	paused = false
+
+func _on_exit_pressed() -> void:
+	Transition.change_scene("uid://bukq1ieysq0am")

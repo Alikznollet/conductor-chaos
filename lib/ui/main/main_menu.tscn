@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bukq1ieysq0am"]
+
+[ext_resource type="Script" uid="uid://b0w83cveybi8y" path="res://lib/ui/main/main_menu.gd" id="1_0cavv"]
+[ext_resource type="Texture2D" uid="uid://cm7vl6qppklb4" path="res://assets/ui/background_menu.png" id="1_wj2l1"]
+[ext_resource type="PackedScene" uid="uid://cws036flukliv" path="res://lib/ui/menu/title_card.tscn" id="2_s2d58"]
+[ext_resource type="PackedScene" uid="uid://bgakc4g0r17e2" path="res://lib/ui/menu/game_button.tscn" id="2_tcc61"]
+[ext_resource type="Texture2D" uid="uid://dm50a15ve4u76" path="res://assets/ui/exit.png" id="3_tcc61"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_0cavv")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wj2l1")
+expand_mode = 2
+
+[node name="TitleCard" parent="." instance=ExtResource("2_s2d58")]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.665
+anchor_top = 0.5
+anchor_right = 0.665
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.363
+anchor_bottom = 0.999
+offset_top = -108.0
+offset_right = 198.36
+offset_bottom = 201.72
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(0, 360)
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Play" parent="VBoxContainer" instance=ExtResource("2_tcc61")]
+layout_mode = 2
+
+[node name="Exit" parent="VBoxContainer" instance=ExtResource("2_tcc61")]
+layout_mode = 2
+texture = ExtResource("3_tcc61")
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
