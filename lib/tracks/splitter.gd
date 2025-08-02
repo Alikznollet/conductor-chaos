@@ -18,6 +18,8 @@ var connection_index: int = 0:
 func increment() -> void:
 	connection_index += 1
 	Global.track.sync_path()
+	%AnimationPlayer.stop()
+	%AnimationPlayer.play("clicked")
 
 func get_selected_rail() -> Rail:
 	return connections[connection_index]

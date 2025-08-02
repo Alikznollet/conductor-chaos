@@ -344,7 +344,7 @@ position = Vector2(1280, 49)
 color = Color(0, 0.419608, 0.721569, 1)
 
 [node name="L" parent="StationManager" instance=ExtResource("9_xgxwf")]
-position = Vector2(806, -772)
+position = Vector2(811, -777)
 color = Color(0, 0.419608, 0.721569, 1)
 
 [node name="M" parent="StationManager" instance=ExtResource("9_xgxwf")]
