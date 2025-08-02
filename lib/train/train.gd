@@ -1,6 +1,8 @@
 extends PathFollow2D
 class_name Train
 
+### ! Train track and driving logic.
+
 var passed_splitter: Splitter:
 	set(new_splitter):
 		if passed_splitter: passed_splitter.enabled = true
@@ -24,6 +26,10 @@ func _process(delta: float) -> void:
 
 	previous_progress = progress_ratio
 
+	## Decrease the patience of the boarded passengers.
+	for passenger in passengers_boarded:
+		passenger.patience -= delta
+
 @export var max_speed: float = 200
 
 ## How much speed increases per second
@@ -40,3 +46,22 @@ func _on_train_box_area_entered(area: Area2D) -> void:
 	# Disable the splitter we just passed.
 	if area is Splitter:
 		passed_splitter = area
+
+### ! PASSENGER LOGIC
+
+var passengers_boarded: Array[Passengers] = []
+
+func board_passengers(passengers: Passengers) -> void:
+	passengers.patience = passengers.max_patience
+	passengers_boarded.append(passengers)
+	Global.game_ui.train_timer(passengers)
+
+func exit_passengers_at(station_name: String) -> void:
+	var passengers_exited: Array[Passengers] = []
+	for passengers in passengers_boarded:
+		if passengers.destination.name == station_name:
+			passengers_exited.append(passengers)
+
+	for passengers in passengers_exited:
+		passengers_boarded.erase(passengers)
+		passengers.reached_destination.emit()

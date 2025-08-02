@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://co3jvbpwp7vnh"]
+[gd_scene load_steps=14 format=3 uid="uid://co3jvbpwp7vnh"]
 
 [ext_resource type="Script" uid="uid://b1g4760sqyqgr" path="res://lib/tracks/track.gd" id="1_65qhm"]
 [ext_resource type="Script" uid="uid://bnj21a4a4v1p3" path="res://lib/main/main.gd" id="1_b1lab"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bpkm4f857cblu" path="res://lib/tracks/splitter.tscn" id="5_x7o64"]
 [ext_resource type="Script" uid="uid://5fxlwtnb4xdg" path="res://lib/tracks/combiner.gd" id="6_6xup4"]
 [ext_resource type="Script" uid="uid://f2h77xdakk66" path="res://lib/state/inactive_state.gd" id="6_x7o64"]
+[ext_resource type="Script" uid="uid://cw1fuvqwpjm1v" path="res://lib/station/station_manager.gd" id="10_xgxwf"]
+[ext_resource type="PackedScene" uid="uid://drjakkf4aqn5o" path="res://lib/station/station.tscn" id="11_6xup4"]
+[ext_resource type="PackedScene" uid="uid://b6x1a5f6okvs5" path="res://lib/ui/game/game_ui.tscn" id="12_wftuq"]
 
 [sub_resource type="Curve2D" id="Curve2D_s3fb5"]
 
@@ -26,8 +29,6 @@ metadata/_custom_type_script = "uid://b1g4760sqyqgr"
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="Track/Train"]
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
 
 [node name="Rail" type="Line2D" parent="Track" node_paths=PackedStringArray("junction")]
 points = PackedVector2Array(0, 0, 1, 652, 9, 671, 26, 692, 54, 700, 93, 700, 411, 699, 685, 686, 1094, 674)
@@ -75,3 +76,28 @@ metadata/_custom_type_script = "uid://d28104c44jpko"
 [node name="InactiveState" type="Node" parent="StateManager"]
 script = ExtResource("6_x7o64")
 metadata/_custom_type_script = "uid://f2h77xdakk66"
+
+[node name="StationManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_xgxwf")
+metadata/_custom_type_script = "uid://cw1fuvqwpjm1v"
+
+[node name="A" parent="StationManager" instance=ExtResource("11_6xup4")]
+position = Vector2(575, 714)
+rotation = -0.0372261
+
+[node name="B" parent="StationManager" instance=ExtResource("11_6xup4")]
+position = Vector2(1132, 313)
+rotation = -3.14062
+
+[node name="C" parent="StationManager" instance=ExtResource("11_6xup4")]
+position = Vector2(1681, 345)
+rotation = -1.56351
+
+[node name="GameUI" parent="." instance=ExtResource("12_wftuq")]
+unique_name_in_owner = true
+
+[node name="PassengerTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+autostart = true

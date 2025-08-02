@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://d10fj4d10l5ak"]
+
+[ext_resource type="Script" uid="uid://d4grh05q0dq2r" path="res://lib/station/station_progress.gd" id="1_rvxeo"]
+[ext_resource type="Texture2D" uid="uid://gllrhd7mq3ev" path="res://assets/background.png" id="2_fqttb"]
+[ext_resource type="Texture2D" uid="uid://d2m5bwin65qrm" path="res://assets/progress.png" id="3_ai8ty"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_14qph"]
+font_size = 80
+
+[node name="StationProgress" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rvxeo")
+
+[node name="Progress" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_right = 100.0
+offset_bottom = 100.0
+fill_mode = 5
+texture_under = ExtResource("2_fqttb")
+texture_over = ExtResource("3_ai8ty")
+texture_progress = ExtResource("3_ai8ty")
+tint_under = Color(0.0605303, 0.0605303, 0.0605303, 0.0901961)
+tint_over = Color(0, 0, 0, 0.105882)
+tint_progress = Color(0.952565, 0.305773, 0.281069, 1)
+
+[node name="StationName" type="Label" parent="Progress"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "A"
+label_settings = SubResource("LabelSettings_14qph")
+horizontal_alignment = 1
+vertical_alignment = 1

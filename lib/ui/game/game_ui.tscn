@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6x1a5f6okvs5"]
+
+[ext_resource type="Script" uid="uid://ci4s7xel6in1q" path="res://lib/ui/game/game_ui.gd" id="1_fcr5n"]
+
+[node name="GameUI" type="CanvasLayer"]
+script = ExtResource("1_fcr5n")
+
+[node name="Timers" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_constants/separation = 100
