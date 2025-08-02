@@ -17,7 +17,7 @@ func _ready() -> void:
 	%StationProgress.color = color
 
 func _process(delta: float) -> void:
-	if train and train.speed == 0: # If the train has stopped we can board the passengers.
+	if train: # If the train passes we can board/drop the passengers
 		if passengers:
 			train.board_passengers(passengers)
 			passengers = null

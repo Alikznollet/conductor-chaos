@@ -3,11 +3,7 @@ class_name Train
 
 ### ! Train track and driving logic.
 
-var passed_splitter: Splitter:
-	set(new_splitter):
-		if passed_splitter: passed_splitter.enabled = true
-		if new_splitter: new_splitter.enabled = false
-		passed_splitter = new_splitter
+var passed_splitters: Array[Splitter] = []
 
 ## Number between 0 and 1 indicating the position 
 var speed: float:
@@ -22,7 +18,10 @@ func _process(delta: float) -> void:
 	progress += speed_curve.sample(speed) * max_speed * delta
 
 	if previous_progress - progress_ratio > 0.5:
-		Global.train.passed_splitter = null
+		for splitter in passed_splitters:
+			splitter.enabled = true
+		
+		passed_splitters = []
 
 	previous_progress = progress_ratio
 
@@ -45,7 +44,8 @@ func decelerate(delta:float) -> void:
 func _on_train_box_area_entered(area: Area2D) -> void:
 	# Disable the splitter we just passed.
 	if area is Splitter:
-		passed_splitter = area
+		area.enabled = false
+		passed_splitters.append(area)
 
 ### ! PASSENGER LOGIC
 
