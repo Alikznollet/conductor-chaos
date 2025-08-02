@@ -10,3 +10,6 @@ func update(delta: float) -> void:
 		Global.train.accelerate(delta)
 	if Input.is_action_pressed("decel"):
 		Global.train.decelerate(delta)
+
+	if Input.is_action_just_pressed("tab"):
+		Global.camera_manager.cycle_camera()

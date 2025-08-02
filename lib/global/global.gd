@@ -6,8 +6,11 @@ var train: Train
 ## The current state manager.
 var state_manager: StateManager
 
-## The current station manager
+## The current station manager.
 var station_manager: StationManager
+
+## The current camera manager.
+var camera_manager: CameraManager
 
 ## The current track.
 var track: Track
