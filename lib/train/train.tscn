@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dw2jmlh0n4acv" path="res://lib/train/train.gd" id="1_2ctkf"]
 
 [sub_resource type="Curve" id="Curve_2ctkf"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.149866, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.586021, 0.876405), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.149866, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2ctkf"]
 size = Vector2(50, 50)
@@ -14,6 +14,8 @@ size = Vector2(50, 50)
 [node name="Train" type="PathFollow2D"]
 script = ExtResource("1_2ctkf")
 speed_curve = SubResource("Curve_2ctkf")
+max_speed = 300.0
+speed_decrease = 0.7
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_2ctkf")

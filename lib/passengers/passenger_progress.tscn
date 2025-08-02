@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6sql7cyp7str"]
+
+[ext_resource type="Texture2D" uid="uid://gllrhd7mq3ev" path="res://assets/background.png" id="1_3b4yo"]
+[ext_resource type="Script" uid="uid://dua3wk2eudkjd" path="res://lib/passengers/passenger_progress.gd" id="1_ih0t8"]
+[ext_resource type="Texture2D" uid="uid://d2m5bwin65qrm" path="res://assets/progress.png" id="2_ih0t8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ih0t8"]
+font_size = 80
+
+[node name="PassengerProgress" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ih0t8")
+
+[node name="Progress" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+offset_right = 100.0
+offset_bottom = 100.0
+fill_mode = 5
+texture_under = ExtResource("1_3b4yo")
+texture_over = ExtResource("2_ih0t8")
+texture_progress = ExtResource("2_ih0t8")
+tint_under = Color(0.0605303, 0.0605303, 0.0605303, 0.0901961)
+tint_over = Color(0, 0, 0, 0.105882)
+tint_progress = Color(0.952565, 0.305773, 0.281069, 1)
+
+[node name="StationName" type="Label" parent="Progress"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "A"
+label_settings = SubResource("LabelSettings_ih0t8")
+horizontal_alignment = 1
+vertical_alignment = 1
