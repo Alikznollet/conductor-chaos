@@ -18,6 +18,8 @@ var track: Track
 ## The main ui of the game
 var game_ui: GameUI
 
+var pause_menu: PauseMenu
+
 var passenger_timer: Timer
 
 ### ! Game VARIABLES

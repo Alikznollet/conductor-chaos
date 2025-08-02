@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://co3jvbpwp7vnh"]
+[gd_scene load_steps=23 format=3 uid="uid://co3jvbpwp7vnh"]
 
 [ext_resource type="Script" uid="uid://b1g4760sqyqgr" path="res://lib/tracks/track.gd" id="1_65qhm"]
 [ext_resource type="Script" uid="uid://bnj21a4a4v1p3" path="res://lib/main/main.gd" id="1_b1lab"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="15_1ykpw"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="16_1ykpw"]
 [ext_resource type="Script" uid="uid://dkufprm65j6p" path="res://lib/camera/camera_manager.gd" id="17_yc1ix"]
+[ext_resource type="PackedScene" uid="uid://c1b3rvbi3b8wx" path="res://lib/ui/menu/pause_menu.tscn" id="18_mdvxw"]
 
 [sub_resource type="Curve" id="Curve_wftuq"]
 _data = [Vector2(0, 0.191011), 0.0, 0.0, 0, 0, Vector2(0.639785, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -281,6 +282,7 @@ metadata/_custom_type_script = "uid://ckjf4dkbukhe3"
 
 [node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
+process_mode = 3
 script = ExtResource("4_xhtjf")
 initial_state = NodePath("ActiveState")
 metadata/_custom_type_script = "uid://bv6pvomqd8ybp"
@@ -388,3 +390,7 @@ script = ExtResource("14_tp6qh")
 zoom = Vector2(0.36, 0.36)
 tween_resource = SubResource("Resource_mdvxw")
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="PauseMenu" parent="." instance=ExtResource("18_mdvxw")]
+unique_name_in_owner = true
+process_mode = 3

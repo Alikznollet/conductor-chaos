@@ -10,6 +10,7 @@ func _ready() -> void:
 	Global.camera_manager = %CameraManager
 	Global.game_ui = %GameUI
 	Global.passenger_timer = %PassengerTimer
+	Global.pause_menu = %PauseMenu
 
 	Global.score_curve = score_curve
 

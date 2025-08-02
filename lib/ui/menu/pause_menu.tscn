@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1b3rvbi3b8wx"]
+
+[ext_resource type="Script" uid="uid://bkjo4852p3i5a" path="res://lib/ui/menu/pause_menu.gd" id="1_8062u"]
+[ext_resource type="PackedScene" uid="uid://bgakc4g0r17e2" path="res://lib/ui/menu/game_button.tscn" id="1_s6ebx"]
+[ext_resource type="Texture2D" uid="uid://dm50a15ve4u76" path="res://assets/ui/exit.png" id="2_8062u"]
+
+[sub_resource type="Gradient" id="Gradient_s6ebx"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8062u"]
+gradient = SubResource("Gradient_s6ebx")
+
+[sub_resource type="Animation" id="Animation_8062u"]
+resource_name = "paused"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 0.196078)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-83.72, 0), Vector2(40.7, 0), Vector2(26, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vpdsl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-83.72, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gryh"]
+_data = {
+&"RESET": SubResource("Animation_vpdsl"),
+&"paused": SubResource("Animation_8062u")
+}
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_8062u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_8062u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.35
+anchor_right = 0.074
+anchor_bottom = 0.65
+offset_left = -109.32
+offset_top = -252.0
+offset_right = 50.56
+offset_bottom = 252.0
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(0, 360)
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Play" parent="VBoxContainer" instance=ExtResource("1_s6ebx")]
+layout_mode = 2
+
+[node name="Exit" parent="VBoxContainer" instance=ExtResource("1_s6ebx")]
+layout_mode = 2
+texture = ExtResource("2_8062u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_0gryh")
+}
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
