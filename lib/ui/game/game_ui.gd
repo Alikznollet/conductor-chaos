@@ -5,17 +5,17 @@ var timer_scene: PackedScene = preload("uid://c6sql7cyp7str")
 
 func train_timer(passengers: Passengers) -> void: 
 	var timer: PassengerProgress = timer_scene.instantiate()
-	timer.passengers = passengers
-
 	%Timers.add_child(timer)
+
+	timer.passengers = passengers
 
 func _ready() -> void:
 	Global.score_changed.connect(interpolate_score)
 
-var shown_score: float:
+var shown_score: int:
 	set(new_visual):
 		shown_score = new_visual
-		%Score.text = str(new_visual)
+		%Score.text = str(new_visual).pad_zeros(8)
 
 ## Will visually update the score.
 func interpolate_score() -> void:

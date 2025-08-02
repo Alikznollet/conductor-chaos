@@ -1,24 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6x1a5f6okvs5"]
+[gd_scene load_steps=4 format=3 uid="uid://b6x1a5f6okvs5"]
 
 [ext_resource type="Script" uid="uid://ci4s7xel6in1q" path="res://lib/ui/game/game_ui.gd" id="1_fcr5n"]
+[ext_resource type="FontVariation" uid="uid://dgknsel7760y4" path="res://assets/fonts/StationFont.tres" id="3_glr8m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ggd21"]
+font = ExtResource("3_glr8m")
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+outline_size = 10
+outline_color = Color(0.937255, 0.937255, 0.937255, 1)
+shadow_size = 0
+shadow_color = Color(0.937255, 0.937255, 0.937255, 1)
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_fcr5n")
 
 [node name="Timers" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
-anchors_preset = 9
+anchors_preset = -1
+anchor_right = 0.113
 anchor_bottom = 1.0
+offset_right = 0.359985
+offset_bottom = -65.0
 grow_vertical = 2
 theme_override_constants/separation = 100
+alignment = 2
 
 [node name="Score" type="Label" parent="."]
 unique_name_in_owner = true
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
-grow_horizontal = 0
-text = "0"
-horizontal_alignment = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -77.0
+offset_right = 144.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "00000000"
+label_settings = SubResource("LabelSettings_ggd21")
+horizontal_alignment = 1
+vertical_alignment = 1

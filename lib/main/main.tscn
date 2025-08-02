@@ -358,7 +358,7 @@ unique_name_in_owner = true
 
 [node name="PassengerTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 5.0
+wait_time = 0.2
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
