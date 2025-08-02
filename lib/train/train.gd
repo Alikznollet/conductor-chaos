@@ -65,4 +65,9 @@ func exit_passengers_at(station_name: String) -> void:
 	for passengers in passengers_exited:
 		passengers_boarded.erase(passengers)
 		passengers.reached_destination.emit()
+
+		var score_particles: ScoreParticles = ScoreParticles.new(passengers.destination.color, passengers.destination)
+		Global.game_ui.add_child(score_particles)
+		score_particles.play_animation()
+
 		Global.add_score(passengers.patience/passengers.max_patience)

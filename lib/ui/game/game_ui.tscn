@@ -39,6 +39,7 @@ offset_top = -77.0
 offset_right = 144.0
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset = Vector2(144, 38)
 text = "00000000"
 label_settings = SubResource("LabelSettings_ggd21")
 horizontal_alignment = 1

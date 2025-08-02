@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqfapk87q2q1k"]
+
+[ext_resource type="Script" uid="uid://dvx4kltii4mpc" path="res://lib/fx/score_particles.gd" id="1_00y08"]
+
+[node name="ScoreParticles" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_00y08")
