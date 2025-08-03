@@ -13,7 +13,8 @@ config_version=5
 config/name="Conductor Chaos"
 run/main_scene="uid://bukq1ieysq0am"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="uid://olm36n2c6bud"
+config/icon="res://promo/Icon.png"
 
 [autoload]
 
@@ -37,7 +38,8 @@ enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 folder_colors={
 "res://assets/": "orange",
-"res://lib/main/": "blue"
+"res://lib/main/": "blue",
+"res://promo/": "gray"
 }
 
 [input]

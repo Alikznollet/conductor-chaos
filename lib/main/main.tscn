@@ -299,8 +299,8 @@ metadata/_custom_type_script = "uid://f2h77xdakk66"
 [node name="StationManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_xgxwf")
-decrease_time_between_passengers = 1.0
-min_time_between_passengers = 10.0
+decrease_time_between_passengers = 1.5
+min_time_between_passengers = 5.0
 metadata/_custom_type_script = "uid://cw1fuvqwpjm1v"
 metadata/_edit_lock_ = true
 
@@ -361,11 +361,12 @@ unique_name_in_owner = true
 
 [node name="PassengerTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 30.0
+wait_time = 25.0
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1369, -73)
+editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -385,12 +386,14 @@ follow_mode = 2
 follow_target = NodePath("../../Track/Train")
 tween_resource = SubResource("Resource_yc1ix")
 follow_damping = true
+draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="MapCamera" type="Node2D" parent="CameraManager"]
 script = ExtResource("14_tp6qh")
 zoom = Vector2(0.31, 0.31)
 tween_resource = SubResource("Resource_mdvxw")
+draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="PauseMenu" parent="." instance=ExtResource("18_mdvxw")]
