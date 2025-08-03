@@ -299,8 +299,8 @@ metadata/_custom_type_script = "uid://f2h77xdakk66"
 [node name="StationManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_xgxwf")
-decrease_time_between_passengers = 1.5
-min_time_between_passengers = 5.0
+decrease_time_between_passengers = 2.0
+min_time_between_passengers = 4.0
 metadata/_custom_type_script = "uid://cw1fuvqwpjm1v"
 metadata/_edit_lock_ = true
 

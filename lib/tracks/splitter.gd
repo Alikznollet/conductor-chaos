@@ -26,8 +26,6 @@ var preconnection_index: int = 0:
 		if enabled:
 			connection_index = preconnection_index
 
-		%AudioStreamPlayer.play()
-
 func increment() -> void:
 	preconnection_index += 1
 
@@ -36,6 +34,7 @@ func increment() -> void:
 
 	%AnimationPlayer.stop()
 	%AnimationPlayer.play("clicked")
+	%AudioStreamPlayer.play()
 
 func get_selected_rail() -> Rail:
 	return connections[connection_index]
