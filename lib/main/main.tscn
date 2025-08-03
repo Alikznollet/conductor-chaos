@@ -388,9 +388,8 @@ follow_damping = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="MapCamera" type="Node2D" parent="CameraManager"]
-position = Vector2(0, 80)
 script = ExtResource("14_tp6qh")
-zoom = Vector2(0.34, 0.34)
+zoom = Vector2(0.31, 0.31)
 tween_resource = SubResource("Resource_mdvxw")
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 

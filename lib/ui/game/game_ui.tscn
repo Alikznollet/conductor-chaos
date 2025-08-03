@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6x1a5f6okvs5"]
+[gd_scene load_steps=4 format=3 uid="uid://b6x1a5f6okvs5"]
 
 [ext_resource type="Script" uid="uid://ci4s7xel6in1q" path="res://lib/ui/game/game_ui.gd" id="1_fcr5n"]
-[ext_resource type="PackedScene" uid="uid://c6sql7cyp7str" path="res://lib/passengers/passenger_progress.tscn" id="2_ggd21"]
 [ext_resource type="LabelSettings" uid="uid://crnh6hhgwg0ep" path="res://lib/ui/game/bestfont.tres" id="2_uom7n"]
 [ext_resource type="Texture2D" uid="uid://daow8vp1tfgc8" path="res://assets/ui/game/Controls.png" id="3_glr8m"]
 
@@ -14,15 +13,13 @@ anchors_preset = -1
 anchor_left = 0.228
 anchor_right = 0.948
 anchor_bottom = 0.179
-offset_left = 0.159973
-offset_right = 0.559937
-offset_bottom = 0.119995
+offset_left = 11.16
+offset_top = -8.0
+offset_right = 11.5599
+offset_bottom = -7.88
 grow_vertical = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 90
 alignment = 2
-
-[node name="PassengerProgress" parent="Timers" instance=ExtResource("2_ggd21")]
-layout_mode = 2
 
 [node name="Score" type="Label" parent="."]
 unique_name_in_owner = true

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bukq1ieysq0am"]
+[gd_scene load_steps=7 format=3 uid="uid://bukq1ieysq0am"]
 
 [ext_resource type="Script" uid="uid://b0w83cveybi8y" path="res://lib/ui/main/main_menu.gd" id="1_0cavv"]
 [ext_resource type="Texture2D" uid="uid://cm7vl6qppklb4" path="res://assets/ui/background_menu.png" id="1_wj2l1"]
 [ext_resource type="PackedScene" uid="uid://cws036flukliv" path="res://lib/ui/menu/title_card.tscn" id="2_s2d58"]
 [ext_resource type="PackedScene" uid="uid://bgakc4g0r17e2" path="res://lib/ui/menu/game_button.tscn" id="2_tcc61"]
 [ext_resource type="Texture2D" uid="uid://dm50a15ve4u76" path="res://assets/ui/exit.png" id="3_tcc61"]
+[ext_resource type="PackedScene" uid="uid://0h65vu75nkp1" path="res://lib/ui/main/full_screen_button.tscn" id="6_elh7w"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_0cavv")
@@ -46,6 +47,15 @@ layout_mode = 2
 [node name="Exit" parent="VBoxContainer" instance=ExtResource("2_tcc61")]
 layout_mode = 2
 texture = ExtResource("3_tcc61")
+
+[node name="FullScreenButton" parent="." instance=ExtResource("6_elh7w")]
+anchors_preset = -1
+anchor_left = 0.042
+anchor_top = 0.068
+anchor_right = 0.042
+anchor_bottom = 0.08
+offset_right = 19.2
+offset_bottom = 25.2
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

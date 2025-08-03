@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://0h65vu75nkp1"]
+
+[ext_resource type="Script" uid="uid://byeaf70xl5vuk" path="res://lib/ui/main/full_screen_button.gd" id="1_d0o8r"]
+[ext_resource type="Texture2D" uid="uid://bdu5gwpnxw0e1" path="res://assets/ui/game/maximize (2).png" id="2_xhmnw"]
+[ext_resource type="Texture2D" uid="uid://cq0cw2xrvkyqb" path="res://assets/ui/game/minimize.png" id="3_aresq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xhmnw"]
+
+[node name="FullScreenButton" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_d0o8r")
+fullscreen_texture = ExtResource("2_xhmnw")
+minimized_texture = ExtResource("3_aresq")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xhmnw")
+icon = ExtResource("2_xhmnw")
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
