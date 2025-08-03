@@ -39,6 +39,7 @@ func _on_button_pressed() -> void:
 
 	%AudioStreamPlayer.play()
 	%Button.icon = pause_icon if !Global.pause_menu.paused else play_icon
+	%Button.release_focus()
 
 	if Global.pause_menu.paused:
 		Global.state_manager.change_state(State.STATE_TYPE.INACTIVE)
