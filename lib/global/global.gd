@@ -20,6 +20,8 @@ var game_ui: GameUI
 
 var pause_menu: PauseMenu
 
+var game_over_menu: GameOverMenu
+
 var passenger_timer: Timer
 
 ### ! Game VARIABLES

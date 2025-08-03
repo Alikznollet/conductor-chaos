@@ -1,0 +1,226 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwgdna4po8lbn"]
+
+[ext_resource type="Script" uid="uid://vlkiy23k2py4" path="res://lib/ui/game/game_over.gd" id="1_gcsvh"]
+[ext_resource type="Texture2D" uid="uid://cwcbobsnu3w34" path="res://assets/ui/GAME.png" id="1_hpotl"]
+[ext_resource type="Texture2D" uid="uid://8bhp6o1qiha" path="res://assets/ui/OVER.png" id="2_gcsvh"]
+[ext_resource type="LabelSettings" uid="uid://crnh6hhgwg0ep" path="res://lib/ui/game/bestfont.tres" id="4_4wd17"]
+[ext_resource type="PackedScene" uid="uid://bgakc4g0r17e2" path="res://lib/ui/menu/game_button.tscn" id="5_4bxym"]
+[ext_resource type="Texture2D" uid="uid://dm50a15ve4u76" path="res://assets/ui/exit.png" id="6_4uj43"]
+
+[sub_resource type="Gradient" id="Gradient_ivcif"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.937255, 0.937255, 0.937255, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4bbnj"]
+gradient = SubResource("Gradient_ivcif")
+
+[sub_resource type="Animation" id="Animation_gcsvh"]
+resource_name = "gameover"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-466.46, 222), Vector2(313, 222), Vector2(313, 222), Vector2(313, 222), Vector2(313, 72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Over:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.133333, 0.433333, 0.633333, 0.8, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1283.78, 360), Vector2(499, 360), Vector2(499, 360), Vector2(499, 360), Vector2(499, 210)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Score:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer:modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4wd17"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-466.46, 222)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Over:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1283.78, 360)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Score:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4wd17"]
+_data = {
+&"RESET": SubResource("Animation_4wd17"),
+&"gameover": SubResource("Animation_gcsvh")
+}
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_gcsvh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_4bbnj")
+
+[node name="Game" type="TextureRect" parent="."]
+offset_left = -466.46
+offset_top = 222.0
+offset_right = 108.54
+offset_bottom = 395.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_hpotl")
+
+[node name="Over" type="TextureRect" parent="."]
+offset_left = 1283.78
+offset_top = 360.0
+offset_right = 1825.78
+offset_bottom = 533.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_gcsvh")
+
+[node name="Score" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.001
+anchor_top = 0.524
+anchor_right = 1.0
+anchor_bottom = 0.631
+offset_left = -0.28
+offset_top = -0.280029
+offset_right = 1.0
+offset_bottom = -0.320038
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score: 111111"
+label_settings = ExtResource("4_4wd17")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_4wd17")
+}
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_top = 0.701
+anchor_right = 1.0
+anchor_bottom = 0.892
+offset_top = 0.279968
+offset_right = 855.0
+offset_bottom = 91.76
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.6, 0.6)
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Replay" parent="VBoxContainer" instance=ExtResource("5_4bxym")]
+layout_mode = 2
+
+[node name="Exit" parent="VBoxContainer" instance=ExtResource("5_4bxym")]
+layout_mode = 2
+texture = ExtResource("6_4uj43")
+
+[connection signal="pressed" from="VBoxContainer/Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

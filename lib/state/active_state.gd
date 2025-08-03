@@ -5,6 +5,11 @@ class_name ActiveState
 func _ready() -> void:
 	type = STATE_TYPE.ACTIVE
 
+func enter() -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(Music, "pitch_scale", 0.8, 0.4)
+	tween.play()
+
 func update(delta: float) -> void:
 	if Input.is_action_pressed("accel"):
 		Global.train.accelerate(delta)

@@ -4,11 +4,17 @@ class_name Passengers
 
 signal reached_destination()
 
+signal passengers_pissed()
+
 var destination: Station
 
 ## When patience hits 0 in any phase the game is over.
 ## Patience is changed by the process function of either station or the train.
-var patience: float
+var patience: float:
+	set(new_patience):
+		patience = new_patience
+
+		if patience < 0: Global.game_over_menu.game_over_animation()
 ## TODO: Hook this up with the game-over.
 
 var max_patience: float
