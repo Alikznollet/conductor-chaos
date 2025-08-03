@@ -26,8 +26,8 @@ var passenger_timer: Timer
 
 ### ! Game VARIABLES
 
-var base_patience: float = 30
-var patience_variance: float = 5
+var base_patience: float = 75
+var patience_variance: float = 10
 
 ## The player's current score
 var score: int = 0:

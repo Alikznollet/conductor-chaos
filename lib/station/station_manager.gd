@@ -3,6 +3,9 @@ class_name StationManager
 
 var stations: Dictionary[String, Station] = {}
 
+@export var decrease_time_between_passengers: float
+@export var min_time_between_passengers: float
+
 func _ready() -> void:
 	for station in get_children():
 		if station is Station:
@@ -10,9 +13,11 @@ func _ready() -> void:
 
 func start_game() -> void:
 	Global.passenger_timer.timeout.connect(new_passengers)
+	new_passengers()
 
 ## Add new passengers to a random station where possible, otherwise we just don't do anything.
 func new_passengers() -> void:
+	Global.passenger_timer.wait_time =  max(min_time_between_passengers, Global.passenger_timer.wait_time - decrease_time_between_passengers)
 	var possible_stations: Array[Station] = stations.values()
 
 	possible_stations.shuffle()

@@ -299,6 +299,8 @@ metadata/_custom_type_script = "uid://f2h77xdakk66"
 [node name="StationManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_xgxwf")
+decrease_time_between_passengers = 1.0
+min_time_between_passengers = 10.0
 metadata/_custom_type_script = "uid://cw1fuvqwpjm1v"
 metadata/_edit_lock_ = true
 
@@ -359,6 +361,7 @@ unique_name_in_owner = true
 
 [node name="PassengerTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 30.0
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

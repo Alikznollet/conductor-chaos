@@ -13,7 +13,7 @@ func enter() -> void:
 func update(delta: float) -> void:
 	if Input.is_action_pressed("accel"):
 		Global.train.accelerate(delta)
-	if Input.is_action_pressed("decel"):
+	else:
 		Global.train.decelerate(delta)
 
 	if Input.is_action_just_pressed("tab"):

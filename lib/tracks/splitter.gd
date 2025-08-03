@@ -4,7 +4,7 @@ class_name Splitter
 @export var connections: Array[Rail]
 
 func _ready() -> void:
-	connection_index = 0
+	preconnection_index = 0
 
 var enabled: bool = true:
 	set(new_enabled):

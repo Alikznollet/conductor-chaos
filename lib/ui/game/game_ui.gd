@@ -20,6 +20,11 @@ var shown_score: int:
 		shown_score = new_visual
 		%Score.text = str(new_visual).pad_zeros(8)
 
+var shown_speed: int:
+	set(new_speed):
+		shown_speed = new_speed
+		%Speed.text = str(shown_speed).pad_zeros(3)
+
 ## Will visually update the score.
 func interpolate_score() -> void:
 	var tween: Tween = create_tween()

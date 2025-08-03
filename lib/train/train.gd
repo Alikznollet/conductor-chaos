@@ -12,6 +12,8 @@ var speed: float:
 		%Tracks.pitch_scale = max(0.01, speed) * 0.7
 		%Revving.pitch_scale = max(0.01, speed) * 0.7
 
+		Global.game_ui.shown_speed = round(speed_curve.sample(speed) * max_speed)
+
 @export var speed_curve: Curve
 
 var previous_progress: float = 0
