@@ -3,6 +3,8 @@ class_name Train
 
 ### ! Train track and driving logic.
 
+var carriage_scene: PackedScene = preload("uid://owocnrpbo8hj")
+
 var passed_splitters: Array[Splitter] = []
 
 ## Number between 0 and 1 indicating the position 
@@ -18,8 +20,14 @@ var speed: float:
 
 var previous_progress: float = 0
 
+var carriage_spacing: float = 30
+
 func _process(delta: float) -> void:
 	progress += speed_curve.sample(speed) * max_speed * delta
+
+	for i in range(len(carriages)):
+		var carriage: Carriage = carriages[i]
+		carriage.progress = progress - (i + 1) * carriage_spacing
 
 	if previous_progress - progress_ratio > 0.5:
 		for splitter in passed_splitters:
@@ -53,6 +61,20 @@ func _on_train_box_area_entered(area: Area2D) -> void:
 		area.enabled = false
 		passed_splitters.append(area)
 
+var carriages: Array[Carriage] = []
+
+func add_carriage(passengers: Passengers) -> void:
+	var carriage: Carriage = carriage_scene.instantiate()
+	carriage.passengers = passengers
+
+	carriages.append(carriage)
+	passengers.reached_destination.connect(carriage.destroy)
+	Global.track.add_child(carriage)
+
+func remove_carriage(carriage: Carriage) -> void:
+	carriages.erase(carriage)
+	carriage.queue_free()
+
 ### ! PASSENGER LOGIC
 
 var passengers_boarded: Array[Passengers] = []
@@ -60,6 +82,7 @@ var passengers_boarded: Array[Passengers] = []
 func board_passengers(passengers: Passengers) -> void:
 	passengers.patience = passengers.max_patience
 	passengers_boarded.append(passengers)
+	add_carriage(passengers)
 	Global.game_ui.train_timer(passengers)
 
 func exit_passengers_at(station_name: String) -> void:
