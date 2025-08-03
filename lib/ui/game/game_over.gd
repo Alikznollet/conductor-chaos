@@ -1,7 +1,11 @@
 extends CanvasLayer
 class_name GameOverMenu
 
+func _ready() -> void:
+	visible = false
+
 func game_over_animation() -> void:
+	visible = true
 	%Score.text = "Score: %d" % Global.score
 	get_tree().paused = true
 	Global.state_manager.change_state(State.STATE_TYPE.INACTIVE)

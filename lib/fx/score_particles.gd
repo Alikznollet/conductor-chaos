@@ -43,6 +43,7 @@ func play_animation() -> void:
 		var vec = dist * dir
 		var move_time: float = to_score_time + randf_range(-time_variance, time_variance)
 		if move_time > longest_time: longest_time = move_time
+		child.pitch = move_time
 
 		tween = create_tween()
 		tween.tween_property(child, "position", from_pos + vec, explode_time).set_trans(Tween.TRANS_CIRC).from(from_pos)

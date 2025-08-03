@@ -22,6 +22,7 @@ var connection_index: int = 0:
 		else: connection_index = new_index
 
 		%Stroke.modulate = get_selected_rail().color
+		%AudioStreamPlayer.play()
 
 func increment() -> void:
 	connection_index += 1

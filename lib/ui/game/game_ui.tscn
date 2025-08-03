@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6x1a5f6okvs5"]
+[gd_scene load_steps=4 format=3 uid="uid://b6x1a5f6okvs5"]
 
 [ext_resource type="Script" uid="uid://ci4s7xel6in1q" path="res://lib/ui/game/game_ui.gd" id="1_fcr5n"]
 [ext_resource type="LabelSettings" uid="uid://crnh6hhgwg0ep" path="res://lib/ui/game/bestfont.tres" id="2_uom7n"]
+[ext_resource type="Texture2D" uid="uid://daow8vp1tfgc8" path="res://assets/ui/game/Controls.png" id="3_glr8m"]
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_fcr5n")
@@ -34,3 +35,14 @@ text = "00000000"
 label_settings = ExtResource("2_uom7n")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.011
+anchor_top = 0.015
+anchor_right = 0.212
+anchor_bottom = 0.17
+offset_right = 632.64
+offset_bottom = 284.6
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_glr8m")
