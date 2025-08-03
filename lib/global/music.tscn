@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm67w1nlycr2i"]
+[gd_scene load_steps=3 format=3 uid="uid://dm67w1nlycr2i"]
 
-[ext_resource type="AudioStream" uid="uid://gp2iyf8oo8u2" path="res://sounds/extremefreddy-loop.mp3" id="1_01u15"]
+[ext_resource type="AudioStream" uid="uid://cqi7bpexxa8ty" path="res://sounds/extremefreddy-loop.wav" id="1_ok7sb"]
+[ext_resource type="Script" uid="uid://cds535xn5gfr" path="res://lib/global/music.gd" id="2_ok7sb"]
 
 [node name="Music" type="AudioStreamPlayer"]
 process_mode = 3
-stream = ExtResource("1_01u15")
+stream = ExtResource("1_ok7sb")
 volume_db = -30.0
 pitch_scale = 0.8
 autoplay = true
-parameters/looping = true
+script = ExtResource("2_ok7sb")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
