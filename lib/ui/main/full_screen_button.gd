@@ -22,4 +22,5 @@ var maximized: bool:
 			%Button.icon = fullscreen_texture
 
 func _on_button_pressed() -> void:
+	%AudioStreamPlayer.play()
 	maximized = !maximized

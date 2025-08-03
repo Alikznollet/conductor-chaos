@@ -1,15 +1,21 @@
 extends CanvasLayer
 class_name PauseMenu
 
+func _ready() -> void:
+	visible = false
+
 var paused: bool:
 	set(new_paused):
 		paused = new_paused
 		if new_paused:
+			visible = true
 			get_tree().paused = true
 			%AnimationPlayer.play("paused")
 		else:
 			get_tree().paused = false
 			%AnimationPlayer.play_backwards("paused")
+			await %AnimationPlayer.animation_finished
+			visible = false
 
 func _on_play_pressed() -> void:
 	paused = false

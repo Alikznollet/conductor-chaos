@@ -1,11 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6x1a5f6okvs5"]
+[gd_scene load_steps=8 format=3 uid="uid://b6x1a5f6okvs5"]
 
 [ext_resource type="Script" uid="uid://ci4s7xel6in1q" path="res://lib/ui/game/game_ui.gd" id="1_fcr5n"]
 [ext_resource type="LabelSettings" uid="uid://crnh6hhgwg0ep" path="res://lib/ui/game/bestfont.tres" id="2_uom7n"]
+[ext_resource type="Texture2D" uid="uid://dupag2qrh3pv4" path="res://assets/ui/playbutton.png" id="3_1njqc"]
 [ext_resource type="Texture2D" uid="uid://daow8vp1tfgc8" path="res://assets/ui/game/Controls.png" id="3_glr8m"]
+[ext_resource type="Texture2D" uid="uid://8tcsogu154xx" path="res://assets/ui/pause.png" id="4_ggd21"]
+[ext_resource type="AudioStream" uid="uid://bp2lhqtm3hoo5" path="res://sounds/button-click-289742.mp3" id="6_grw7r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ggd21"]
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_fcr5n")
+pause_icon = ExtResource("4_ggd21")
+play_icon = ExtResource("3_1njqc")
 
 [node name="Timers" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -64,3 +71,27 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "000"
 label_settings = ExtResource("2_uom7n")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+z_index = 99
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = -90.0
+offset_right = 260.0
+offset_bottom = 147.0
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ggd21")
+icon = ExtResource("4_ggd21")
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_grw7r")
+volume_db = -10.0
+pitch_scale = 1.2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

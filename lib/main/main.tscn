@@ -358,6 +358,7 @@ color = Color(0.545098, 0, 0.909804, 1)
 
 [node name="GameUI" parent="." instance=ExtResource("12_wftuq")]
 unique_name_in_owner = true
+process_mode = 3
 
 [node name="PassengerTimer" type="Timer" parent="."]
 unique_name_in_owner = true

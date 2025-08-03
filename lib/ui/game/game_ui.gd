@@ -30,3 +30,17 @@ func interpolate_score() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "shown_score", Global.score, ScoreParticles.to_score_time).set_trans(Tween.TRANS_CUBIC).set_delay(ScoreParticles.explode_time)
 	tween.play()
+
+@export var pause_icon: Texture
+@export var play_icon: Texture
+
+func _on_button_pressed() -> void:
+	Global.pause_menu.paused = !Global.pause_menu.paused
+
+	%AudioStreamPlayer.play()
+	%Button.icon = pause_icon if !Global.pause_menu.paused else play_icon
+
+	if Global.pause_menu.paused:
+		Global.state_manager.change_state(State.STATE_TYPE.INACTIVE)
+	else:
+		Global.state_manager.change_state(State.STATE_TYPE.ACTIVE)

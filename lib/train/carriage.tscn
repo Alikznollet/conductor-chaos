@@ -15,6 +15,6 @@ texture = ExtResource("1_3hsec")
 
 [node name="Over" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0.212305, 0.212305, 0.212305, 1)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_k1eh0")

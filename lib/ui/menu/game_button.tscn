@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ckxhe4eti8fwg" path="res://lib/ui/menu/game_button.gd" id="1_se70s"]
 [ext_resource type="Texture2D" uid="uid://cboygvs61q350" path="res://assets/ui/play.png" id="2_xurbt"]
-[ext_resource type="AudioStream" uid="uid://datu5k4xgkpnm" path="res://sounds/button.wav" id="3_pouqw"]
+[ext_resource type="AudioStream" uid="uid://bp2lhqtm3hoo5" path="res://sounds/button-click-289742.mp3" id="3_pouqw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pouqw"]
 
@@ -73,6 +73,8 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_pouqw")
+volume_db = -10.0
+pitch_scale = 1.2
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

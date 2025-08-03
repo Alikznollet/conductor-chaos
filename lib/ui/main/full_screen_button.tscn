@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://0h65vu75nkp1"]
+[gd_scene load_steps=6 format=3 uid="uid://0h65vu75nkp1"]
 
 [ext_resource type="Script" uid="uid://byeaf70xl5vuk" path="res://lib/ui/main/full_screen_button.gd" id="1_d0o8r"]
 [ext_resource type="Texture2D" uid="uid://bdu5gwpnxw0e1" path="res://assets/ui/game/maximize (2).png" id="2_xhmnw"]
 [ext_resource type="Texture2D" uid="uid://cq0cw2xrvkyqb" path="res://assets/ui/game/minimize.png" id="3_aresq"]
+[ext_resource type="AudioStream" uid="uid://bp2lhqtm3hoo5" path="res://sounds/button-click-289742.mp3" id="4_aresq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xhmnw"]
 
@@ -25,5 +26,11 @@ grow_vertical = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xhmnw")
 icon = ExtResource("2_xhmnw")
 flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_aresq")
+volume_db = -10.0
+pitch_scale = 1.2
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
