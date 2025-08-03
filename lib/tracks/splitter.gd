@@ -11,22 +11,29 @@ var enabled: bool = true:
 		enabled = new_enabled
 
 		if enabled:
-			%AnimationPlayer.play_backwards("disable")
-		else:
-			%AnimationPlayer.play("disable")
+			connection_index = preconnection_index
 
-var connection_index: int = 0:
+var connection_index: int = 0
+
+var preconnection_index: int = 0:
 	set(new_index):
-		if not enabled: return
-		if new_index >= len(connections): connection_index = 0
-		else: connection_index = new_index
+		if new_index >= len(connections): preconnection_index = 0
+		else: preconnection_index = new_index
 
-		%Stroke.modulate = get_selected_rail().color
+		var rail: Rail = connections[preconnection_index]
+		%Stroke.modulate = rail.color	
+
+		if enabled:
+			connection_index = preconnection_index
+
 		%AudioStreamPlayer.play()
 
 func increment() -> void:
-	connection_index += 1
-	Global.track.sync_path()
+	preconnection_index += 1
+
+	if enabled:
+		Global.track.sync_path()
+
 	%AnimationPlayer.stop()
 	%AnimationPlayer.play("clicked")
 
@@ -34,5 +41,5 @@ func get_selected_rail() -> Rail:
 	return connections[connection_index]
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_action_pressed("left_click") and enabled:
+	if event.is_action_pressed("left_click"):
 		increment()

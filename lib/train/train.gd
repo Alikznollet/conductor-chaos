@@ -23,6 +23,8 @@ func _process(delta: float) -> void:
 		for splitter in passed_splitters:
 			splitter.enabled = true
 		
+		# Sync the new path after passing spawn.
+		Global.track.sync_path()
 		passed_splitters = []
 
 	previous_progress = progress_ratio
